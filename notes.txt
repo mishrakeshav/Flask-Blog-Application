@@ -29,3 +29,24 @@ User('Keshav','k@demo.com','default.jpg')
 
 >>> db.drop_all()
 >>> db.create_all()
+
+
+Extension for hashing password
+>>>pip install flask-bcrypt
+>>> from flask_bcrypt import Bcrypt
+>>> bcrypt = Bcrypt()
+>>> bcrypt.generate_password_hash('testing')
+b'$2b$12$Y29YjIhf1wPsIfEWYB.AUea8DoUezmsIzEdMu8GRrW5Fr6dd9KVWG'
+>>> bcrypt.generate_password_hash('testing').decode()
+'$2b$12$090u4sFmseGt1f0yV0E2UeEIFrFka6je4nvjhq1wZy406B5f.BQde'
+>>> bcrypt.generate_password_hash('testing').decode('utf-8')
+'$2b$12$afzWdpwoRUKw7MkKz2Q8yui5k4wYlW/4.IyGI118uxsM7i7dP5SPC'
+>>> hashed_password = bcrypt.generate_password_hash('testing').decode('utf-8')
+>>> bcrypt.check_password_hash(hashed_password, 'password')
+False
+>>> bcrypt.check_password_hash(hashed_password, 'testing')
+True
+>>>
+
+Extension for managing session for login and logout
+>>>pip install flask-login
