@@ -52,3 +52,5 @@ Extension for managing session for login and logout
 >>>pip install flask-login
 
 >>>pip install Pillow
+
+>>>pip install flask-mail
